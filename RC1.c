@@ -9,7 +9,7 @@ void obtenerMaxMinEstudiante(float *calificaciones, int estudianteIdx, float *ma
 
 int main() {
     int estudiantes;
-    int asignaturas = 3; // Reemplazo de la constante definida
+    int asignaturas = 3; 
 
     printf("=== SISTEMA DE GESTION DE CALIFICACIONES ===\n");
     printf("Ingrese el numero de estudiantes: ");
@@ -87,5 +87,40 @@ void obtenerMaxMinEstudiante(float *calificaciones, int estudianteIdx, float *ma
         float notaActual = *(calificaciones + (estudianteIdx * asignaturastat + j));
         if (notaActual > *max) *max = notaActual;
         if (notaActual < *min) *min = notaActual;
+    }
+}
+
+void calcularEstadisticasAsignaturas(float *calificaciones, int estudiantes, int asignaturastat) {
+    printf("\n======================================================\n");
+    printf("   REPORTE DE ESTADISTICAS POR ASIGNATURA\n");
+    printf("======================================================\n");
+    
+    for (int j = 0; j < asignaturastat; j++) {
+        float suma = 0;
+        float max = *(calificaciones + (0 * asignaturastat + j));
+        float min = *(calificaciones + (0 * asignaturastat + j));
+        int aprobados = 0;
+        int reprobados = 0;
+        
+        for (int i = 0; i < estudiantes; i++) {
+            float nota = *(calificaciones + (i * asignaturastat + j));
+            suma += nota;
+            
+            if (nota > max) max = nota;
+            if (nota < min) min = nota;
+            
+            if (nota >= 6.0) {
+                aprobados++;
+            } else {
+                reprobados++;
+            }
+        }
+        
+        float promedio = suma / estudiantes;
+        
+        printf("Asignatura %d:\n", j + 1);
+        printf("  > Promedio General: %.2f\n", promedio);
+        printf("  > Calificacion Mas Alta: %.2f | Mas Baja: %.2f\n", max, min);
+        printf("  > Aprobados: %d | Reprobados: %d\n\n", aprobados, reprobados);
     }
 }
