@@ -9,7 +9,7 @@ void obtenerMaxMinEstudiante(float *calificaciones, int estudianteIdx, float *ma
 
 int main() {
     int estudiantes;
-    int asignaturas = 3; // Reemplazo de la constante definida
+    int asignaturas = 3; 
 
     printf("=== SISTEMA DE GESTION DE CALIFICACIONES ===\n");
     printf("Ingrese el numero de estudiantes: ");
@@ -109,7 +109,7 @@ void calcularEstadisticasAsignaturas(float *calificaciones, int estudiantes, int
             if (nota > max) max = nota;
             if (nota < min) min = nota;
             
-            if (nota >= 6.0) { // Nota aprobatoria según Consigna S9 RC1 Solución de Problemas.pdf
+            if (nota >= 6.0) { 
                 aprobados++;
             } else {
                 reprobados++;
