@@ -9,7 +9,7 @@ void obtenerMaxMinEstudiante(float *calificaciones, int estudianteIdx, float *ma
 
 int main() {
     int estudiantes;
-    int asignaturas = 3; 
+    int asignaturas = 3; // Reemplazo de la constante definida
 
     printf("=== SISTEMA DE GESTION DE CALIFICACIONES ===\n");
     printf("Ingrese el numero de estudiantes: ");
@@ -18,7 +18,7 @@ int main() {
         while (getchar() != '\n');
     }
 
-    // Reserva de memoria dinamica para la matriz aplanada
+    
     float *calificaciones = (float *)malloc(estudiantes * asignaturas * sizeof(float));
     
     if (calificaciones == NULL) {
@@ -109,7 +109,7 @@ void calcularEstadisticasAsignaturas(float *calificaciones, int estudiantes, int
             if (nota > max) max = nota;
             if (nota < min) min = nota;
             
-            if (nota >= 6.0) {
+            if (nota >= 6.0) { // Nota aprobatoria según Consigna S9 RC1 Solución de Problemas.pdf
                 aprobados++;
             } else {
                 reprobados++;
