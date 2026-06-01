@@ -44,7 +44,7 @@ int main ()
     
 
     //Funcion Calcular Promedio X Estudiante
-    printf("|||||||| PROMEDIOS ||||||||\n");
+    printf("  |||||||| PROMEDIOS ||||||||\n");
     float matriznotas[n][3];
     Funpromedio(notas,&n);
 
@@ -106,6 +106,7 @@ int main ()
 }
 
 //Calculo de Promedio X Estudiante
+//Integracion de punteros en el calculo de Promedio X Estudiante
 void Funpromedio(float (*notas)[3],int *n){
     float promedio;
     int cont = 1;
