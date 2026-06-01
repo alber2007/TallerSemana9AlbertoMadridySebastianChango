@@ -10,6 +10,11 @@ int main ()
     int n;
     printf ("Ingrese el numero de estudiantes: ");
     scanf("%d",&n);
+    while (n<1)
+    {
+        printf("ERROR Ingrese un numero mayor que 0\n");
+        scanf("%d",&n);
+    }
 
     //Declaracion de variables
     float notas[n][3];
