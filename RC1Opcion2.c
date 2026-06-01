@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-//Llamado de la Funcion Calcular Promedio por estudiante
+//Prototipo de la Funcion Calcular Promedio por estudiante
 //Integración de punteros en la Funcion Funpromedio
 void Funpromedio(float (*notas)[3],int *n);
 
