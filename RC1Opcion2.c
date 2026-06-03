@@ -3,6 +3,7 @@
 //Prototipo de la Funcion Calcular Promedio por estudiante
 //Integración de punteros en la Funcion Funpromedio
 void Funpromedio(float (*notas)[3],int *n);
+void FunpromedioA(float (*notas)[3],int *n);
 
 int main ()
 {
@@ -41,7 +42,7 @@ int main ()
 
     cont = 1;
 
-    printf("\n\n---------- MATRIZ NOTAS ----------\n\n");
+    printf("\n\n------------- MATRIZ NOTAS -------------\n\n");
     for (int i = 0; i < n; i++){
         printf("Estudiante %d",cont);
         for (int j = 0; j < 3; j++)
@@ -62,18 +63,7 @@ int main ()
 
     //Calculo de Promedio X Asignatura
     printf("\n\n---------- PROMEDIOS x ASIGNATURA ----------\n\n");
-    for(int j=0; j<3;j++){
-    printf("        Promedio Asignatura %d:",cont);
-        for (int i=0;i<n;i++){ 
-            
-            promedio = promedio + notas[i][j];
-        }
-    promedio = promedio/n;
-    printf("%.2f\n",promedio);
-    promedio = 0;
-    cont++;
-    }
-
+    FunpromedioA(notas,&n);
     cont = 1;
 
     //Identificación de la nota mas alta y baja
@@ -132,6 +122,22 @@ void Funpromedio(float (*notas)[3],int *n){
             promedio = promedio + *( *(notas + i) + j);
         }
     promedio = promedio/3;
+    printf("%.2f\n",promedio);
+    promedio = 0;
+    cont++;
+    }
+}
+
+void FunpromedioA(float (*notas)[3],int *n){
+    float promedio;
+    int cont = 1;
+    for(int j=0; j<3;j++){
+    printf("        Promedio Asignatura %d:",cont);
+        for (int i=0;i<*n;i++){ 
+            
+            promedio = promedio + *( *(notas + i) + j);
+        }
+    promedio = promedio / *n;
     printf("%.2f\n",promedio);
     promedio = 0;
     cont++;
