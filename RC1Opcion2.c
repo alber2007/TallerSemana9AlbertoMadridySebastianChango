@@ -2,8 +2,11 @@
 
 //Prototipo de la Funcion Calcular Promedio por estudiante
 //Integración de punteros en la Funcion Funpromedio
+//Prototipo de la Funcion Calcular Promedio por asignatura
+//Integración de punteros en la Funcion FunpromedioA
 void Funpromedio(float (*notas)[3],int *n);
 void FunpromedioA(float (*notas)[3],int *n);
+void FunnotaAB(float (*notas)[3],int *n);
 
 int main ()
 {
@@ -42,6 +45,7 @@ int main ()
 
     cont = 1;
 
+    //Impresion de la Matriz notas
     printf("\n\n------------- MATRIZ NOTAS -------------\n\n");
     for (int i = 0; i < n; i++){
         printf("Estudiante %d",cont);
@@ -58,7 +62,6 @@ int main ()
     printf("\n\n---------- PROMEDIOS x ESTUDIANTE ----------\n\n");
     float matriznotas[n][3];
     Funpromedio(notas,&n);
-
     cont = 1;
 
     //Calculo de Promedio X Asignatura
@@ -68,27 +71,7 @@ int main ()
 
     //Identificación de la nota mas alta y baja
     printf("\n\n---------- NOTAS ALTA Y BAJA ----------\n");
-    for (int j = 0 ; j < 3; j++){
-        printf("\n            **Asignatura %d**",cont);
-      for (int i = 0 ; i < n; i++){
-        
-        if (i == 0) {
-        nalta = notas[i][j];
-        nbaja = notas[i][j];
-        }else if (notas[i][j] < nbaja) {
-            nbaja = notas[i][j];
-        }else if (notas[i][j] > nalta) {
-            nalta = notas[i][j];
-        }  
-        }
-        
-        printf("\n       La nota mas baja es: %.2f",nbaja);
-        printf("\n       La nota mas alta es: %.2f",nalta);
-        cont++;
-        nalta = 0;
-        nbaja = 10;
-    }
-    
+    FunnotaAB(notas,&n);
     cont = 1;
 
     //Identificación del numero de aprobados y reprobados X asignatura
@@ -128,6 +111,8 @@ void Funpromedio(float (*notas)[3],int *n){
     }
 }
 
+//Calculo de Promedio X Asignatura
+//Integracion de punteros en el calculo de Promedio X Asignatura
 void FunpromedioA(float (*notas)[3],int *n){
     float promedio;
     int cont = 1;
@@ -141,6 +126,31 @@ void FunpromedioA(float (*notas)[3],int *n){
     printf("%.2f\n",promedio);
     promedio = 0;
     cont++;
+    }
+} 
+
+void FunnotaAB(float (*notas)[3],int *n){
+    float nbaja = 10,nalta=0;
+    int cont = 1;
+    for (int j = 0 ; j < 3; j++){
+        printf("\n            **Asignatura %d**",cont);
+      for (int i = 0 ; i < *n; i++){
+        
+        if (i == 0) {
+        nalta = notas[i][j];
+        nbaja = notas[i][j];
+        }else if (notas[i][j] < nbaja) {
+            nbaja = notas[i][j];
+        }else if (notas[i][j] > nalta) {
+            nalta = notas[i][j];
+        }  
+        }
+        
+        printf("\n       La nota mas baja es: %.2f",nbaja);
+        printf("\n       La nota mas alta es: %.2f",nalta);
+        cont++;
+        nalta = 0;
+        nbaja = 10;
     }
 }
 
