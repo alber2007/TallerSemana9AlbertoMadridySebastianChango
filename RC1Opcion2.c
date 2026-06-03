@@ -7,6 +7,7 @@
 void Funpromedio(float (*notas)[3],int *n);
 void FunpromedioA(float (*notas)[3],int *n);
 void FunnotaAB(float (*notas)[3],int *n);
+void funApRp(float(*notas)[3],int *n);
 
 int main ()
 {
@@ -76,22 +77,7 @@ int main ()
 
     //Identificación del numero de aprobados y reprobados X asignatura
     printf("\n\n---------- APROBADOS Y REPROBADOS ----------\n");
-    for(int j=0; j<3;j++){
-    printf("\n             **Asignatura %d**",cont);
-        for (int i=0;i<n;i++){
-            if(notas[i][j] >= 6){
-                aprobados++;
-            }
-        }
-    printf("\n          Nro. Aprobados:  %d",aprobados);  
-    reprobados=n-aprobados;
-    printf("\n          Nro. Reprobados: %d",reprobados);    
-    reprobados=0;
-    aprobados=0;
-    cont++;
-    }
-
-
+    funApRp(notas,&n);
 }
 
 //Calculo de Promedio X Estudiante
@@ -151,6 +137,25 @@ void FunnotaAB(float (*notas)[3],int *n){
         cont++;
         nalta = 0;
         nbaja = 10;
+    }
+}
+
+void funApRp(float(*notas)[3],int *n){
+    int aprobados = 0, reprobados = *n;
+    int cont = 1;
+    for(int j=0; j<3;j++){
+    printf("\n             **Asignatura %d**",cont);
+        for (int i=0;i<*n;i++){
+            if(notas[i][j] >= 6){
+                aprobados++;
+            }
+        }
+    printf("\n          Nro. Aprobados:  %d",aprobados);  
+    reprobados=*n-aprobados;
+    printf("\n          Nro. Reprobados: %d",reprobados);    
+    reprobados=0;
+    aprobados=0;
+    cont++;
     }
 }
 
