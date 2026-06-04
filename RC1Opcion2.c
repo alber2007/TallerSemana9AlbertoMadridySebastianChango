@@ -27,6 +27,7 @@ int main ()
     int cont = 1;
     float nbaja = 10,nalta=0;
     int aprobados = 0, reprobados = n;
+    float matriznotas[n][3];
 
     //Bucle para el ingreso de notas(datos para la matriz)
     for(int i=0; i<n;i++){
@@ -61,7 +62,6 @@ int main ()
 
     //Funcion Calcular Promedio X Estudiante
     printf("\n\n---------- PROMEDIOS x ESTUDIANTE ----------\n\n");
-    float matriznotas[n][3];
     Funpromedio(notas,&n);
     cont = 1;
 
